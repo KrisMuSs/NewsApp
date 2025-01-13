@@ -19,16 +19,13 @@ final class NetworkManager{
         
         //Выбрасываем ошибку, если переменная не присвоилась
         guard let url = URL(string: urlNews) else { throw NetworkError.invalidURL }
-        print("URL: \(url)")
         //Получение данных и ответов с сервера
         let (data, response) = try await URLSession.shared.data(from: url)
-        print("Data: \(data)")
-      //  print(String(data: data, encoding: .utf8) ?? "Пустые данные")
 
         guard let response = response as? HTTPURLResponse, response.statusCode == 200 else { throw NetworkError.invalidResponse}
         
         do{
-    //JSONDecoder помогает превратить текст в формате JSON в объект (в структурф или классы, определнные в коде), с которым удобно работать.
+    //JSONDecoder помогает превратить текст в формате JSON в объект (в структуры или классы, определенные в коде), с которыми удобно работать.
             return try JSONDecoder().decode(News.self, from: data)
         }catch{
             throw NetworkError.invalidData
