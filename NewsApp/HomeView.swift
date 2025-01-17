@@ -6,6 +6,7 @@ struct HomeView: View {
     
     // MARK: - Properties
     @StateObject var vm = ViewModel()
+    
     // MARK: - Body
     var body: some View {
             NavigationView{
@@ -20,26 +21,7 @@ struct HomeView: View {
                     ScrollView(.horizontal, showsIndicators: false){
                         HStack{
                             ForEach(vm.topNews, id: \.url) { article in
-                                VStack{
-                                    ZStack{
-                                        
-                                        Rectangle()
-                                            .frame(height: 150)
-                                            .foregroundStyle(.secondary)
-                                            .opacity(0.3)
-                                            .cornerRadius(10)
-                                        
-                                        Image(systemName: "photo")
-                                            .resizable()
-                                            .foregroundStyle(.secondary)
-                                            .scaledToFit()
-                                            .frame(height: 50)
-                                    }
-                                }
-                                .frame(width: 260, height: 260)
-                                .padding(10)
-                                .background(.white)
-                                .cornerRadius(10)
+                                TopArticleView(article: article)
                             }
                            
                         }
@@ -61,3 +43,5 @@ struct HomeView: View {
 #Preview {
     HomeView()
 }
+
+

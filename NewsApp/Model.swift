@@ -14,11 +14,8 @@ struct News: Decodable {
 struct Article: Codable {
     let title, description: String
     let url: String
-    let urlToImage: String
-    //Не работает код
-    //let publishedAt: Date
-    //Работает код
-    //let publishedAt: String
+    let urlToImage: String?
+    let publishedAt: Date
 }
 
 
