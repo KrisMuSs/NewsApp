@@ -29,11 +29,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		FA38703E2D3B67B800543204 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		FA5DE86C2D288EAF00939BA6 = {
 			isa = PBXGroup;
 			children = (
 				FA5DE8772D288EAF00939BA6 /* NewsApp */,
 				FA5DE8762D288EAF00939BA6 /* Products */,
+				FA38703E2D3B67B800543204 /* Views */,
 			);
 			sourceTree = "<group>";
 		};

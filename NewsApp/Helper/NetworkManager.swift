@@ -3,8 +3,8 @@ final class NetworkManager{
     
     // MARK: - Properties
     static let shared = NetworkManager()
-    private let urlNews = "https://newsapi.org/v2/everything?domains=wsj.com&apiKey=b52fc18c932740dd9b75a3353d64d245"
-    
+   
+
     //JSONDecoder помогает превратить текст в формате JSON в объект (в структуры или классы, определенные в коде), с которыми удобно работать.
     let decoder = JSONDecoder()
     
@@ -16,19 +16,20 @@ final class NetworkManager{
     }
     
     //MARK: - Methods
-    func getNews() async throws -> News {
+    func getNews(urlString: String) async throws -> News {
         
         //Выбрасываем ошибку, если переменная не присвоилась
-        guard let url = URL(string: urlNews) else { throw NetworkError.invalidURL }
+        guard let url = URL(string: urlString) else { throw NetworkError.invalidURL }
         //Получение данных и ответов с сервера
         let (data, response) = try await URLSession.shared.data(from: url)
 
         guard let response = response as? HTTPURLResponse, response.statusCode == 200 else { throw NetworkError.invalidResponse}
         
         do{
-  
+            // Декодируем полученные данные в объект типа News
             return try decoder.decode(News.self, from: data)
         }catch{
+            // Если декодирование не удалось, выбрасываем ошибку
             throw NetworkError.invalidData
         }
     }
