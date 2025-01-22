@@ -14,17 +14,19 @@ struct HomeView: View {
                     
                     // MARK: - Top News
 
-                    Text("Top News")
-                        .font(.title)
-                        .fontWeight(.bold)
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                        .padding(.leading)
-                        .padding(.top)
+                    TitleNewsView(title: "Top News")
                     
                     ScrollView(.horizontal, showsIndicators: false){
                         HStack(spacing: 12){
                             ForEach(vm.topNews, id: \.url) { article in
-                                TopArticleView(article: article)
+                                
+                                NavigationLink {
+                                    DetailView(article: article)
+                                } label: {
+                                    TopArticleView(article: article)
+                                }
+                                .buttonStyle(.plain)
+
                             }
                             
                         }
@@ -34,18 +36,18 @@ struct HomeView: View {
                     
                     // MARK: - Bottom News
 
-                    Text("Bottom News")
-                        .font(.title)
-                        .fontWeight(.bold)
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                        .padding(.leading)
-                        .padding(.top)
+                    TitleNewsView(title: "Bottom News")
                     
                     
                     ScrollView(.horizontal, showsIndicators: false){
                         HStack(spacing: 12){
                             ForEach(vm.bottomNews, id: \.url) { article in
-                                BottomArticleView(article: article)
+                                NavigationLink {
+                                    DetailView(article: article)
+                                } label: {
+                                    BottomArticleView(article: article)
+                                }
+                                .buttonStyle(.plain)
                             }
                             
                         }
@@ -79,7 +81,3 @@ struct HomeView: View {
 #Preview {
     HomeView()
 }
-
-
-
-

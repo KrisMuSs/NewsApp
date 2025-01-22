@@ -12,7 +12,8 @@ struct News: Decodable {
 // MARK: - Article
 //Группа статей
 struct Article: Codable {
-    let title, description: String
+    let title: String
+    let description: String?
     let url: String
     let urlToImage: String?
     let publishedAt: Date
