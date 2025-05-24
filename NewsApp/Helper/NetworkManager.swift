@@ -1,5 +1,6 @@
 import Foundation
-final class NetworkManager{
+
+actor NetworkManager{
     
     // MARK: - Properties
     static let shared = NetworkManager()

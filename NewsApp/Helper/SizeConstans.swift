@@ -1,6 +1,7 @@
 
 import SwiftUI
 
+@MainActor
 struct SizeContains{
     static var sizeHeight: CGFloat{
         UIScreen.main.bounds.height / 2

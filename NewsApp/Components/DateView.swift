@@ -13,5 +13,6 @@ struct DateView: View {
     var body: some View {
         Text(article.publishedAt.converDate())
             .descriptionFont()
+        
     }
 }

@@ -27,6 +27,7 @@ struct DetailView : View {
                 .frame(maxWidth: .infinity,alignment: .leading)
                 .background(.background)
                 .background(GradientView())
+                
             }
             .ignoresSafeArea()
             .navigationBarHidden(true)
